@@ -16,3 +16,18 @@ class City(models.Model):
     class Meta:
         db_table = 'cities'
 
+class Product(models.Model):
+    name = models.CharField(max_length=50, unique=True)
+    price = models.IntegerField(default=0)
+
+    class Meta:
+        db_table = 'products'
+
+class Order(models.Model):
+    product = models.ForeignKey('Product', on_delete = models.CASCADE)
+    created_at = models.DateTimeField()
+
+    class Meta:
+        db_table = 'orders'
+
+
